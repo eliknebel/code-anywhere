@@ -14,6 +14,7 @@ RUN apt-cache policy docker-ce
 RUN apt-get install -y docker-ce
 RUN curl -L "https://github.com/docker/compose/releases/download/1.23.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 RUN chmod +x /usr/local/bin/docker-compose
+RUN usermod -aG docker coder
 
 # # install node and localtunnel
 # RUN apt-get install -y nodejs npm
