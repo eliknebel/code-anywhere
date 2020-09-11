@@ -56,6 +56,8 @@ Run with docker support:
 docker run -it --rm -e PASSWORD=changeme -v /var/run/docker.sock:/var/run/docker.sock -v `pwd`:/workspace code-anywhere
 ```
 
+Depending on your host `/var/run/docker.sock` permissions, you may have to use `sudo` once in the vscode integrated web terminal to access docker or supply the `-u root:root` flag.
+
 ## Credits
 Thank you to the excellent open source work made available by the code-server team at https://github.com/cdr/code-server and vs-code at https://github.com/microsoft/vscode. Their amazing contributions to open source make this project possible.
 
