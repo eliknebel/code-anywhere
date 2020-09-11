@@ -1,3 +1,6 @@
+## Overview
+code-anywhere is a dockerized visual studio code server that is accessible through a web browser via ngrok. It can be run anywhere docker is available.
+
 ## Quick Start
 
 You can use a prebuilt image to quickly get a coder-server instance running.
