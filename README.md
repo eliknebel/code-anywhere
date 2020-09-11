@@ -57,6 +57,6 @@ docker run -it --rm -e PASSWORD=changeme -v /var/run/docker.sock:/var/run/docker
 ```
 
 ## Credits
-Thank you to the excellent open source work made available by the code-server team at https://github.com/cdr/code-server and vs-code at https://github.com/microsoft/vscode. Without their amazing contributions to open source, this project would not be possible.
+Thank you to the excellent open source work made available by the code-server team at https://github.com/cdr/code-server and vs-code at https://github.com/microsoft/vscode. Their amazing contributions to open source make this project possible.
 
 I have no affiliation with either of these orgaizations in any way.
