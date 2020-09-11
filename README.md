@@ -5,7 +5,7 @@ code-anywhere is a dockerized visual studio code server that is accessible throu
 
 You can use a prebuilt image to quickly get a coder-server instance running.
 **However**, while this instance will run fine, any files or directories created will
-not have the correct permissions of the host user. Furhtermore, you may not be able to
+not have the correct permissions of the host user. Furthermore, you may not be able to
 access certain files or use docker commands.
 
 It is recommended to use the proper method under [Getting Started](#getting-started) below instead of
@@ -61,4 +61,4 @@ Depending on your host `/var/run/docker.sock` permissions, you may have to use `
 ## Credits
 Thank you to the excellent open source work made available by the code-server team at https://github.com/cdr/code-server and vs-code at https://github.com/microsoft/vscode. Their amazing contributions to open source make this project possible.
 
-I have no affiliation with either of these orgaizations in any way.
+I have no affiliation with either of these orgaizations.
