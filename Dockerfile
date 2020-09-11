@@ -34,5 +34,20 @@ RUN chmod +x /bin/ngrok-info
 # supervisord configuration
 COPY supervisord.conf /etc/supervisord.conf
 
+ARG USER_ID
+ARG GROUP_ID
+
+RUN if [ ${USER_ID:-0} -ne 0 ] && [ ${GROUP_ID:-0} -ne 0 ]; then \
+    userdel -f coder &&\
+    if getent group coder ; then groupdel coder; fi &&\
+    groupadd -g ${GROUP_ID} coder &&\
+    useradd -l -u ${USER_ID} -g coder coder &&\
+    install -d -m 0755 -o coder -g coder /home/coder &&\
+    chown --changes --silent --no-dereference --recursive \
+          --from=1000:1000 ${USER_ID}:${GROUP_ID} \
+        /home/coder \
+;fi
+
 USER coder
+
 ENTRYPOINT ["supervisord", "-c", "/etc/supervisord.conf", "-n"]
