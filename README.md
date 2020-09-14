@@ -34,13 +34,13 @@ cd code-anywhere
 docker image build \
     --build-arg USER_ID=$(id -u ${USER}) \
     --build-arg GROUP_ID=$(id -g ${USER}) \
-    -t code-anywhere \
+    -t code-anywhere:${USER} \
     .
 ```
 
 Run code-anywhere:
 ```
-docker run -it --rm -e PASSWORD=changeme -v `pwd`:/workspace code-anywhere
+docker run -it --rm -e PASSWORD=changeme -v `pwd`:/workspace code-anywhere:${USER}
 ```
 
 > Be sure to set PASSWORD=`changeme` to something private and secure
