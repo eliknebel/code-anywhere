@@ -53,14 +53,14 @@ To exit interactive mode and continue running the container in the background, u
 
 **Docker support**
 ```
-docker run -it --rm -e PASSWORD=changeme -v /var/run/docker.sock:/var/run/docker.sock -v `pwd`:/workspace code-anywhere
+docker run -it --rm -e PASSWORD=changeme -v /var/run/docker.sock:/var/run/docker.sock -v `pwd`:/workspace code-anywhere:${USER}
 ```
 
 Depending on your host `/var/run/docker.sock` permissions, you may have to use `sudo` once in the vscode integrated web terminal to access docker or supply the `-u root:root` flag.
 
 **Mapped SSH key**
 ```
-docker run -it --rm -e PASSWORD=changeme -v $HOME/.ssh:/home/coder/.ssh -v `pwd`:/workspace code-anywhere
+docker run -it --rm -e PASSWORD=changeme -v $HOME/.ssh:/home/coder/.ssh -v `pwd`:/workspace code-anywhere:${USER}
 ```
 
 Using the vscode integrated web terminal, run:
