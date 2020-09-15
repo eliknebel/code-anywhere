@@ -52,21 +52,47 @@ To exit interactive mode and continue running the container in the background, u
 ### Additional Options
 
 **Docker support**
+
+Build the image with correct user and docker permissions:
+```
+cd code-anywhere
+docker image build \
+    --build-arg USER_ID=$(id -u ${USER}) \
+    --build-arg GROUP_ID=$(id -g ${USER}) \
+    -t code-anywhere:${USER} \
+    .
+```
+
 ```
 docker run -it --rm -e PASSWORD=changeme -v /var/run/docker.sock:/var/run/docker.sock -v `pwd`:/workspace code-anywhere:${USER}
 ```
 
 Depending on your host `/var/run/docker.sock` permissions, you may have to use `sudo` once in the vscode integrated web terminal to access docker or supply the `-u root:root` flag.
 
-**Mapped SSH key**
+**Map User Home**
+The simplest way to persist any settings across sessions and utilize your host user ssh keys from code-server is to map your home directory into /home/coder.
 ```
-docker run -it --rm -e PASSWORD=changeme -v $HOME/.ssh:/home/coder/.ssh -v `pwd`:/workspace code-anywhere:${USER}
+docker run -it --rm -e PASSWORD=changeme -v $HOME:/home/coder -v `pwd`:/workspace code-anywhere:${USER}
 ```
 
-Using the vscode integrated web terminal, run:
+To enable an ssh key the vscode integrated web terminal, run:
 ```
 eval `ssh-agent -s`
 ssh-add
+```
+
+**Run as a different user**
+```
+USER=someotheruser
+docker image build \
+    --build-arg USER_ID=$(id -u ${USER}) \
+    --build-arg GROUP_ID=$(id -g ${USER}) \
+    -t code-anywhere:${USER} \
+    .
+```
+
+```
+docker run -it --rm -e PASSWORD=changeme -v `pwd`:/workspace code-anywhere:${USER}
 ```
 
 ## Credits
