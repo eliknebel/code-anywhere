@@ -70,6 +70,7 @@ docker run -it --rm -e PASSWORD=changeme -v /var/run/docker.sock:/var/run/docker
 Depending on your host `/var/run/docker.sock` permissions, you may have to use `sudo` once in the vscode integrated web terminal to access docker or supply the `-u root:root` flag.
 
 **Map User Home**
+
 The simplest way to persist any settings across sessions and utilize your host user ssh keys from code-server is to map your home directory into /home/coder.
 ```
 docker run -it --rm -e PASSWORD=changeme -v $HOME:/home/coder -v `pwd`:/workspace code-anywhere:${USER}
